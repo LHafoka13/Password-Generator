@@ -1,195 +1,85 @@
 //PASSWORD CHARACTER ARRAYS
-symbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", ];
-upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
-lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
+var symbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", ];
+var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
+var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
+var usersChoice = [];
 
-  // 1) get the number from the prompt from the user ex: 10
-  // 2) ask user what types of chars they want in their password(sym, upper, lower, number)
-    // 2.5) use the .push() method to push each array (that the user wants) into an empty array
-      // ex: var blankArray = []
-  // 3) once all of the chars that the user wants in their password (being held in blankArray) THEN for loop over blank array
-    // 3.5) inside the loop, run a math.random and get a random char from each loop
-
-
-    var blankArray = []
-
-    // prompt = do you want symbols? if === true then blankArray.push(symbols)
-
-  for(var i = 0; i < numbers.length; i++) {
-  
-  console.log(numbers[i])
-}
-
-
-
-// take the number that the user gets from the promp and give that to the for loop to loop over that amount of times
-// for loop {
-  // math.random()
-// }
-
-//FUNCTIONS THAT RETURN RANDOM VALUES
-
-function randomLower () {
-  return lowerCaseLetters[Math.floor(Math.random () * lowerCaseLetters.length)];
-}
-
-function randomUpper () {
-  return upperCaseLetters[Math.floor(Math.random() * upperCaseLetters.length)];
-}
-
-function randomNumber () {
-  return numbers[Math.floor(Math.random() * numbers.length)];
-}
-
-function randomSpecial () {
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
-//FUNCTION COMBINING ALL RANDOM FUNCTIONS 
-
-var allFunc = {
-  lower: randomLower,
-  upper: randomUpper,
-  number: randomNumber,
-  symbol: randomSpecial
-};
-// //FUNCTIONS THAT PROMPT USER IF THEY WANT CHARACTER, AND RETURN A CORRESPONDING VALUE
-
-// function userWantsLow () {
-//   lowLetter = confirm("Do you want to include Lower Case letters in your password?");
-//   if (lowLetter) {
-//     console.log(randomLower ());
-//   } else {
-//     console.log(lowLetter);
-//   }
-// }
-
-// function userWantsUpper () {
-//   upLetter = confirm("Do you want to include Upper Case letters in your password?");
-//   if (upLetter) {
-//     console.log(randomUpper()); 
-//   } else {
-//     console.log(upLetter);
-//   }
-// }
-
-// function userWantsNumb () {
-//   num = confirm("Do you want to include Numbers in your password?");
-//   if (num) {
-//     console.log(randomNumber());
-//   } else {
-//     console.log(num);
-//   }
-// }
-
-// function userWantsSpec () {
-//   spec = confirm("Do you want to include Special Characters in your password?");
-//   if (spec) {
-//     console.log(randomSpecial());
-//   } else {
-//     console.log(spec);
-//   }
-// }
-
-//WHEN GENERATE BUTTON IS CLICKED, FUNCTION IS LAUNCHED
-
+//FUNCTION TO GENERATE THE PASSWORD
 function passwordLength () {
-  for(var i = 0; i < numbers.length; i++) {
-  
-  console.log(numbers[i])
-}
+//EMPTIES USERPASS SO THAT IT DOESN'T BUILD UPON ITSELF EVERYTIME YOU PRESS GENERATE
+  var userPass = [];
+//PROMPTS USER TO ENTER A NUMERIC VALUE BETWEEN 8 AND 128, IF THEY DON'T ENTER THE APPROPRIATE VALUE, IT PROMPTS THEM TO TRY AGAIN
   var userLength = prompt("How many characters do you want in your password? Enter a numeric value between 8 and 128."); 
   if (userLength > 128 || userLength < 8) {
     prompt ("Enter a numeric value between 8 and 128."); 
   } else if (userLength <= 128 || userLength >= 8) {
-    console.log(userLength);
+    userLength;
   //   return userLength;
   } else {
     return userLength;
   }
 
+    //USER MUST CONFIRM IF THEY WANT LOWER CASE LETTERS IN THEIR PASSWORD AND IF SO, IT CONCATS THE ARRAY OF LOWERCASELETTER INTO THE BLANK ARRAY OF USERSCHOICE
+
    var lowLetter = confirm("Do you want to include Lower Case letters in your password?");
    if (lowLetter) {
      // blankArray.push(lowLetter)
-    console.log(randomLower ());
+    // usersChoice.push(lowerCaseLetters);
+   usersChoice = usersChoice.concat(lowerCaseLetters);
   } else {
     console.log(lowLetter);
   }
 
+  //USER MUST CONFIRM IF THEY WANT UPPER CASE LETTER IN THEIR PASSWORD AND IF SO, IT CONCATS THE ARRAY OF UPPERCASELETTER INTO THE BLANK ARRAY OF USERSCHOICE
+
    var upLetter = confirm("Do you want to include Upper Case letters in your password?");
   if (upLetter) {
-    console.log(randomUpper()); 
+    usersChoice = usersChoice.concat(upperCaseLetters); 
   } else {
     console.log(upLetter);
   }
+  
+  //USER MUST CONFIRM IF THEY WANT NUMBERS IN THEIR PASSWORD AND IF SO, AND CONCATS THE ARRAY OF NUMBERS INTO THE BLANK ARRAY OF USERSCHOICE
 
   var num = confirm("Do you want to include Numbers in your password?");
   if (num) {
-    console.log(randomNumber());
+   usersChoice = usersChoice.concat(numbers);
   } else {
     console.log(num);
   }
 
+    //USER MUST CONFIRM IF THEY WANT SPECIAL CHARACTERS IN THEIR PASSWORD AND IF SO, AND CONCATS THE ARRAY OF SYMBOLS INTO THE BLANK ARRAY OF USERSCHOICE
+
  var spec = confirm("Do you want to include Special Characters in your password?");
   if (spec) {
-    console.log(randomSpecial());
+    usersChoice = usersChoice.concat(symbols);
   } else {
-    console.log(spec);
-  }};
-
-
-  //  var types = lowLetter.value + upLetter.value + num.value + spec.value;
-  // //  var passArray = [{lowletter}, {upLetter}, {num}, {spec}].filter (
-  // //    item => Object.values(item)
-  // //  );
-
-  //  for (var i = 0; i < userLength; i += types) {
-  //   // types.forEach(type => {
-  //     var funcName = Object.keys(type)[0];
-  //     console.log("funcName:", funcName);
-  //     // += allFunc[funcName] (); 
-  //   });
-  
+    console.log(spec);}
 
    
 
 
-  
+    console.log('userChoice',usersChoice);
+    console.log('userLength', userLength);
+
+    
+
+    for (var i = 0; i < userLength; i++) {
+      //LOOPS AND RETURNS VALUES UNTIL IT REACHES THE VALUE OF USERLENGTH
+      console.log(i) 
+      //RETURNS A RANDOM NUMERIC VALUE
+      var randomChar = Math.floor(Math.random() * usersChoice.length);
+      //RETURNS THE INDEX VALUES OF USERS CHOICE AND PUSHES IT INTO A SINGLE ARRAY CALLED USERASS
+      userPass.push((usersChoice[randomChar]));
 
 
+    }
+      
+   //SETS THE VARIABLE PASSWORDTEXT TO THE ID OF #PASSWORD
 
-  // for (var i = 0; i < userLength.length; i+= ); {
-  //   console.log((lowLetter.value + upLetter.value + num.value + spec.value) * userLength.length);
-  
+    var passwordText = document.querySelector("#password");
 
-  // userWantsLow ();
-  // userWantsUpper();
-  // userWantsNumb();
-  // userWantsSpec ();
-
-  
-  // for (var i = 0; i < userLength; i++); {
-  //   console.log((userWantsLow() + userWantsUpper() + userWantsNumb () + userWantsSpec ()) * userLength);
-  // }
-
- 
-// for (var i = 0; i < passwordLength.length; i++);
-
-// function generatePassword () {
-//   for (var i = 0; i < passwordLength.length; i++); {
-//     outputPass = [Math.floor(Math.random () * passwordLength())];
-//   }
-
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
-
-// // Add  listener to generate button
-// generateBtn.addEventListener("click", writePassword)
+    //THE VALUE OF PASSWORD TEXT IS EQUAL TO THE JOINED VALUES FROM USER PASS
+    passwordText.value = userPass.join("");
+  }
