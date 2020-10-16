@@ -25,4 +25,8 @@ Then it spits the password out on screen.
 
 ![6](https://user-images.githubusercontent.com/68487859/96199627-2ede9100-0f15-11eb-9aba-015c8838725a.png)
 
-<a src="https://lhafoka13.github.io/Password-Generator/">Password Generator</a>
+<h1>Links</h1>
+
+<ul>
+  <li><a href="https://lhafoka13.github.io/Password-Generator/">Password Generator</a></li>
+</ul>
