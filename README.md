@@ -1,4 +1,5 @@
 # Password-Generator
+<strong>Functionality</strong>
 This webpage will generate a random password including the values that the End User desires. 
 
 To begin, it asks End User to enter the numeric value between 8 and 128-- this will be the length of their password. 
